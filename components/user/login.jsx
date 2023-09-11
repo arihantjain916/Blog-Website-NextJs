@@ -46,7 +46,7 @@ export const Login = () => {
   return (
     <>
       {loading ? "<p> Loading...</p>" : ""}
-      <main className="overflow-hidden lg:flex lg:p-16">
+      <main className="lg:overflow-hidden lg:flex lg:p-16 lg:justify-around">
         <div className="content ">
           {/* <!-- heading start from here --> */}
           <div className="p-3 pt-11">
@@ -157,7 +157,7 @@ export const Login = () => {
             </p>
           </div>
         </div>
-        <div className="hidden image lg:block">
+        <div className="hidden image lg:flex lg:pointer-events-none">
           <img className="overflow-hidden" src="/login_img.png" alt="" />
         </div>
       </main>

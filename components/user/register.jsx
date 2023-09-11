@@ -168,7 +168,7 @@ export const Register = () => {
             </p>
           </div>
         </div>
-        <div className="hidden pt-10 image lg:block">
+        <div className="hidden pt-10 image lg:block lg:pointer-events-none lg:w-[50%]">
           <img src="/register_img.png" alt="register_image" />
         </div>
       </main>
