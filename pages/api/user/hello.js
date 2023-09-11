@@ -1,5 +1,5 @@
-import connectDb from "../../dbConfig/dbConfig";
-import User from "../../models/User";
+import connectDb from "../../../dbConfig/dbConfig";
+import User from "../../../models/User";
 // import { NextApiResponse, NextApiRequest } from "next";
 import bcrypt from "bcryptjs";
 

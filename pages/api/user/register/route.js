@@ -1,5 +1,5 @@
-import connectDb from "../../../dbConfig/dbConfig"
-import User from "../../../models/User";
+import connectDb from "../../../../dbConfig/dbConfig"
+import User from "../../../../models/User";
 import bcrypt from "bcryptjs";
 await connectDb();
 
