@@ -1,4 +1,4 @@
-import { Register } from "@/components/user/Register";
+import { Register } from "../../../components/user/register";
 
 
 function Home() {
