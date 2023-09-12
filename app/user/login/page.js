@@ -1,9 +1,9 @@
 import { Login } from "../../../components/user/login"
 
-const Home = () => {
+const login = () => {
     return (
         <div><Login /></div>
     )
 }
 
-export default Home
+export default login

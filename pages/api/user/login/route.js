@@ -1,7 +1,9 @@
+"use server";
+
 import connectDb from "../../../../dbConfig/dbConfig";
 import User from "../../../../models/User";
 import bcrypt from "bcryptjs";
-
+import generateToken from "../../../../helpers/generateToken";
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -22,6 +24,11 @@ const login = async (req, res) => {
         success: false,
       });
     }
+    const token = generateToken(user._id, user.isAdmin);
+    res.setHeader(
+      "Set-Cookie",
+      `JWT_AUTH_TOKEN=${token}; Secure; HttpOnly; Max-Age=2592000;`
+    );
 
     return res.status(201).json({
       message: "Login Successful",

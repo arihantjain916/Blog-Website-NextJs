@@ -1,12 +1,11 @@
 import { Register } from "../../../components/user/register";
 
-
-function Home() {
-    return (
-        <div>
-            <Register />
-        </div>
-    )
+function register() {
+  return (
+    <div>
+      <Register />
+    </div>
+  );
 }
 
-export default Home
+export default register;
