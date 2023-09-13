@@ -3,7 +3,7 @@
 import connectDb from "../../../dbConfig/dbConfig";
 import Contact from "../../../models/Contact-Us";
 
-const login = async (req, res) => {
+const ContactUs = async (req, res) => {
   try {
     const { email, fullname, message } = req.body;
 
@@ -34,4 +34,4 @@ const handleServerError = (res, error) => {
   });
 };
 
-export default login;
+export default ContactUs;

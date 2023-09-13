@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 export const Contactus = () => {
   const router = useRouter();
   const [message, setmessage] = useState({
@@ -20,8 +21,8 @@ export const Contactus = () => {
       });
 
       if (response.status === 201) {
-        // const data = await response.json();
-        // toast.success(data.message);
+        const data = await response.json();
+        toast.success(data.message);
         // router.push("/");
       } else {
         const errorData = await response.json();
@@ -46,6 +47,7 @@ export const Contactus = () => {
   };
   return (
     <main>
+      <Toaster />
       <div className="flex flex-col lg:p-2 lg:pt-2 lg:flex-row lg:justify-around">
         <div id="image">
           <img
