@@ -67,6 +67,7 @@ export const Contactus = () => {
             className="flex flex-col gap-5 lg:gap-10"
           >
             <input
+              required
               className="border-b-2 border-[#00054B] pb-2 outline-none"
               type="text"
               placeholder="Full Name"
@@ -76,6 +77,7 @@ export const Contactus = () => {
               }
             />
             <input
+              required
               className="border-b-2 border-[#00054B] pb-2 outline-none"
               type="email"
               placeholder="E-mail"
@@ -85,6 +87,7 @@ export const Contactus = () => {
               }
             />
             <input
+              required
               className="border-b-2 border-[#00054B] pb-2 outline-none"
               type="text"
               placeholder="Message"

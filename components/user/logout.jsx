@@ -49,7 +49,11 @@ export const LogoutButton = () => {
   return (
     <div>
       {isToken ? (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="px-10 py-5 text-center text-white bg-blue-700 rounded-full">
+          <p>
+            Logout
+          </p>
+        </button>
       ) : (
         <div>
           <p>You are not logged in!</p>
