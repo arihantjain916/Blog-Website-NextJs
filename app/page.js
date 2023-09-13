@@ -1,5 +1,6 @@
 import { LogoutButton } from "../components/user/logout";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/footer";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <h1 className="text-6xl font-bold">Arihant Jain's Home Page</h1>
         <LogoutButton />
       </main>
+      <Footer />
     </>
   );
 }

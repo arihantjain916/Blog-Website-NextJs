@@ -56,8 +56,8 @@ export const LogoutButton = () => {
         </button>
       ) : (
         <div>
-          <p>You are not logged in!</p>
-          <p className="p-4 mt-3 text-center text-white bg-blue-700 rounded-full">
+          
+          <p className="p-4 px-8 mt-3 text-center text-white bg-blue-700 rounded-full">
             <Link href="/user/login">Login</Link>
           </p>
         </div>

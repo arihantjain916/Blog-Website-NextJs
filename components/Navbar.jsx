@@ -1,19 +1,38 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import Link from "next/link";
-import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { BiMenuAltRight } from "react-icons/bi";
 import { LogoutButton } from "./user/logout";
 
 export const Navbar = () => {
+  const router = useRouter();
   const [isOpen, setOpen] = useState(false);
+  const [isToken, setToken] = useState(false);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const token = Cookies.get("JWT_AUTH_TOKEN");
+        if (token) {
+          setToken(true);
+        } else {
+          console.log("Cookie not found");
+        }
+      } catch (error) {
+        console.error("Error fetching JWT_AUTH_TOKEN cookie:", error);
+      }
+    };
+    checkToken();
+  }, []);
   function NavOpen() {
     setOpen(!isOpen);
   }
   return (
     <>
-      <nav className="fixed w-full h-20 bg-white shadow-xl">
+      <nav className="fixed w-full h-20 bg-white shadow-xl mb-52">
         <div className="flex items-center justify-between w-full h-full px-4 2xl:px-16">
           <div>
             <Link href="/" className="font-bold">
@@ -23,22 +42,21 @@ export const Navbar = () => {
           <div className="hidden sm:flex">
             <ul className="hidden sm:flex">
               <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/about-us">About-Us</Link>
+                <Link href="/">Home Page</Link>
               </li>
               <li className="ml-10 text-base uppercase hover:border-b">
                 <Link href="/about-us">About-Us</Link>
               </li>
-              <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/about-us">About-Us</Link>
-              </li>
-              <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/about-us">About-Us</Link>
-              </li>
+              {/* <li className="ml-10 text-base uppercase hover:border-b">
+                <Link href="/user/login">Login</Link>
+              </li> */}
             </ul>
-            {/* <LogoutButton /> */}
+          </div>
+          <div className="hidden lg:block">
+            <LogoutButton />
           </div>
 
-          <div className="lg:hidden">
+          <div className="lg:hidden md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"

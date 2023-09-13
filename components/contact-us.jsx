@@ -48,7 +48,7 @@ export const Contactus = () => {
   return (
     <main>
       <Toaster />
-      <div className="flex flex-col lg:p-2 lg:pt-2 lg:flex-row lg:justify-around">
+      <div className="flex flex-col py-16 lg:p-2 lg:pt-[5.4rem] lg:flex-row lg:justify-around">
         <div id="image">
           <img
             src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
@@ -57,7 +57,7 @@ export const Contactus = () => {
         </div>
         <div
           id="contact-us"
-          className="w-full p-10 lg:p-[2.3rem] border-2 rounded-r-2xl border-black bg-white"
+          className="w-full p-10 lg:p-[2.3rem] border-2 lg:rounded-r-2xl border-black bg-white"
         >
           <h1 className="text-center text-[#00054B] text-4xl font-Playfair mb-8 lg:mb-12 ">
             Contact Us
