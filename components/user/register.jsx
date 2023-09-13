@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-// import axios from "axios";
+import bcrypt from "bcryptjs";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -14,9 +14,16 @@ export const Register = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-
+  
   const registerUser = async (userData) => {
     try {
+      // const hash = await bcrypt.hash(userData.password, 10);
+      // console.log(userData.password);
+      // const bodyData = {
+      //   username: userData.username,
+      //   email: userData.email,
+      //   password: hash
+      // }
       const response = await fetch("/api/user/register/route", {
         method: "POST",
         headers: {

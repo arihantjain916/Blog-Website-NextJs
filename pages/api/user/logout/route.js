@@ -4,8 +4,9 @@ const logout = async (req, res) => {
   try {
     res.setHeader(
       "Set-Cookie",
-      `JWT_AUTH_TOKEN=""; Secure; HttpOnly; Max-Age=0;`
+      `JWT_AUTH_TOKEN=""; HttpOnly; Max-Age=0; Path=/;`
     );
+    
     return res.status(201).json({
       message: "Logout Successful",
       success: true,

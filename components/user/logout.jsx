@@ -6,15 +6,23 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 
 export const LogoutButton = () => {
-  const [isToken, setToken] = useState(false);
   const router = useRouter();
+  const [isToken, setToken] = useState(false);
 
   useEffect(() => {
-    // Check for the JWT token when the component mounts
-    const token = Cookies.get("JWT_AUTH_TOKEN");
-    if (token) {
-      setToken(true);
-    }
+    const checkToken = async () => {
+      try {
+        const token = Cookies.get("JWT_AUTH_TOKEN");
+        if (token) {
+          setToken(true);
+        } else {
+          console.log("Cookie not found");
+        }
+      } catch (error) {
+        console.error("Error fetching JWT_AUTH_TOKEN cookie:", error);
+      }
+    };
+    checkToken();
   }, []);
 
   const handleLogout = async () => {
@@ -45,7 +53,9 @@ export const LogoutButton = () => {
       ) : (
         <div>
           <p>You are not logged in!</p>
-          <p className="p-4 mt-3 text-center text-white bg-blue-700 rounded-full"><Link href="/user/login">Login</Link></p>
+          <p className="p-4 mt-3 text-center text-white bg-blue-700 rounded-full">
+            <Link href="/user/login">Login</Link>
+          </p>
         </div>
       )}
     </div>

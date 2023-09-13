@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
-
+import Cookies from "js-cookie";
+import bcrypt from "bcryptjs";
 export const Login = () => {
   const router = useRouter();
 
@@ -13,8 +14,14 @@ export const Login = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const registerUser = async (userData) => {
+  const loginUser = async (userData) => {
     try {
+      // const hash = await bcrypt.hash(userData.password, 10);
+      // console.log(userData.password);
+      // const bodyData = {
+        // username: userData.username,
+        // password: hash,
+      // };
       const response = await fetch("/api/user/login/route", {
         method: "POST",
         headers: {
@@ -25,7 +32,10 @@ export const Login = () => {
 
       if (response.status === 201) {
         const data = await response.json();
-        toast.success(data.message);
+        await Cookies.set("JWT_AUTH_TOKEN", data.token, {
+          expires: 30,
+          path: "/",
+        });
         router.push("/");
       } else {
         const errorData = await response.json();
@@ -40,7 +50,7 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await registerUser(user);
+    await loginUser(user);
     setLoading(false);
   };
   return (

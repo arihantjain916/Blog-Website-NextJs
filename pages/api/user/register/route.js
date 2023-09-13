@@ -1,10 +1,10 @@
-import connectDb from "../../../../dbConfig/dbConfig"
+import connectDb from "../../../../dbConfig/dbConfig";
 import User from "../../../../models/User";
 import bcrypt from "bcryptjs";
-await connectDb();
 
 const register = async (req, res) => {
   try {
+    await connectDb();
     const reqBody = req.body;
     const { email, username, password } = reqBody;
 
@@ -27,7 +27,7 @@ const register = async (req, res) => {
       message: "User created successfully",
       success: true,
       user: savedUser,
-    })
+    });
   } catch (error) {
     return res.status(500).json({
       message: "Error...",

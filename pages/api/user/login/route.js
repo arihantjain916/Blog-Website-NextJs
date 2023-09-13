@@ -18,6 +18,8 @@ const login = async (req, res) => {
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
+    // isPasswordMatch
+    // if(password  user.password)
     if (!isPasswordMatch) {
       return res.status(400).json({
         message: "Invalid Credentials",
@@ -25,14 +27,11 @@ const login = async (req, res) => {
       });
     }
     const token = generateToken(user._id, user.isAdmin);
-    res.setHeader(
-      "Set-Cookie",
-      `JWT_AUTH_TOKEN=${token}; Secure; HttpOnly; Max-Age=2592000;`
-    );
-
+  
     return res.status(201).json({
       message: "Login Successful",
       success: true,
+      token:token
     });
   } catch (error) {
     handleServerError(res, error);
