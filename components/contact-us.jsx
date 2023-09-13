@@ -2,27 +2,27 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 export const Contactus = () => {
+  const router = useRouter();
   const [message, setmessage] = useState({
     email: "",
     fullname: "",
     message: "",
   });
-  const registerMessage = async (userData) => {
+  const registerMessage = async (message) => {
     try {
       const response = await fetch("/api/contact-us/route", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(message),
       });
 
       if (response.status === 201) {
-        const data = await response.json();
-        toast.success(data.message);
-        router.push("/");
+        // const data = await response.json();
+        // toast.success(data.message);
+        // router.push("/");
       } else {
         const errorData = await response.json();
         console.error(errorData.message);
@@ -32,9 +32,17 @@ export const Contactus = () => {
       console.error("Error:", error);
     }
   };
+  const setDefaultValue = () => {
+    setmessage({
+      email: "",
+      fullname: "",
+      message: "",
+    });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     await registerMessage(message);
+    setDefaultValue();
   };
   return (
     <main>

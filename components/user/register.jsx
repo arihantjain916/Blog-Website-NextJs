@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import bcrypt from "bcryptjs";
 import { useRouter } from "next/navigation";
-import { toast } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Register = () => {
   const router = useRouter();
@@ -14,7 +13,7 @@ export const Register = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-  
+
   const registerUser = async (userData) => {
     try {
       // const hash = await bcrypt.hash(userData.password, 10);
@@ -55,7 +54,7 @@ export const Register = () => {
 
   return (
     <>
-      {loading ? "<p> Loading...</p>" : ""}
+      <Toaster />
 
       <main className="lg:flex lg:justify-around lg:p-16 lg:overflow-hidden">
         <div className="content">
@@ -102,12 +101,32 @@ export const Register = () => {
               className="p-3 pl-5 border-2 border-gray-300 outline-none focus:border-black rounded-3xl"
             />
             <p className="ml-3 -mt-5">Must be at least 8 characters</p>
-            <button
-              type="submit"
-              className="p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
-            >
-              Create account
-            </button>
+
+            {loading ? (
+              <button
+                disabled
+                type="submit"
+                class="flex justify-center gap-1 p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 512 512"
+                  width="20"
+                  class="animate-spin fill-[#ffffff] mt-1"
+                >
+                  <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z" />
+                </svg>
+                Create Account
+              </button>
+            ) : (
+              <button
+                type="submit"
+                class="flex justify-center gap-1 p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
+              >
+                Create account
+              </button>
+            )}
           </form>
 
           {/* <!-- Social login here --> */}

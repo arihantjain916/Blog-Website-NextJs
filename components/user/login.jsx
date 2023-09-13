@@ -2,9 +2,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
-import bcrypt from "bcryptjs";
+import toast, { Toaster } from "react-hot-toast";
 export const Login = () => {
   const router = useRouter();
 
@@ -19,8 +18,8 @@ export const Login = () => {
       // const hash = await bcrypt.hash(userData.password, 10);
       // console.log(userData.password);
       // const bodyData = {
-        // username: userData.username,
-        // password: hash,
+      // username: userData.username,
+      // password: hash,
       // };
       const response = await fetch("/api/user/login/route", {
         method: "POST",
@@ -55,12 +54,13 @@ export const Login = () => {
   };
   return (
     <>
-      {loading ? "<p> Loading...</p>" : ""}
+    <Toaster />
+
       <main className="lg:overflow-hidden lg:flex lg:p-16 lg:justify-around">
         <div className="content ">
           {/* <!-- heading start from here --> */}
           <div className="p-3 pt-11">
-            <h1 className="mb-3 text-3xl text-center">Welcome back!</h1>
+            <h1 className="mb-3 text-3xl text-center">Login to Continue</h1>
             <p className="text-base text-center text-gray-500">
               Simplify your shopping and save your time with Arihant's App. Get
               started for free.
@@ -94,12 +94,31 @@ export const Login = () => {
             <a href="#" className="-mt-3 text-end">
               Forgot Password?
             </a>
-            <button
-              type="submit"
-              className="p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
-            >
-              Login
-            </button>
+            {loading ? (
+              <button
+                disabled
+                type="submit"
+                class="flex justify-center gap-1 p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 512 512"
+                  width="20"
+                  class="animate-spin fill-[#ffffff] mt-1"
+                >
+                  <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z" />
+                </svg>
+                Create Account
+              </button>
+            ) : (
+              <button
+                type="submit"
+                class="flex justify-center gap-1 p-3 mt-3 mb-5 text-white bg-black rounded-3xl"
+              >
+                Login
+              </button>
+            )}
           </form>
 
           {/* <!-- Social login here --> */}
