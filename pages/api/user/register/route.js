@@ -36,13 +36,5 @@ const register = async (req, res) => {
     });
   }
 };
-// try{
 
-// }
-// catch(error){
-//   return NextResponse.json({
-//       error: error.message,
-//       status:500
-//   })
-// }
 export default register;

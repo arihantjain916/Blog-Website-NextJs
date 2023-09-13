@@ -25,8 +25,8 @@ export const Contactus = () => {
         // router.push("/");
       } else {
         const errorData = await response.json();
-        console.error(errorData.message);
-        toast.error(errorData.message);
+        console.error(errorData.error);
+        toast.error(errorData.error);
       }
     } catch (error) {
       console.error("Error:", error);

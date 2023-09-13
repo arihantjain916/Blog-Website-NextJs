@@ -37,8 +37,7 @@ export const Register = () => {
         router.push("/user/login");
       } else {
         const errorData = await response.json();
-        console.error(errorData.message);
-        toast.error(errorData.message);
+        toast.error(errorData.error);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -74,6 +73,7 @@ export const Register = () => {
             className="flex flex-col gap-5 p-3 mt-5"
           >
             <input
+              required
               type="text"
               name="username"
               id="username"
@@ -83,6 +83,7 @@ export const Register = () => {
               className="p-3 pl-5 border-2 border-gray-300 outline-none focus:border-black rounded-3xl"
             />
             <input
+              required
               type="email"
               name="email"
               id="email"
@@ -92,6 +93,7 @@ export const Register = () => {
               className="p-3 pl-5 border-2 border-gray-300 outline-none focus:border-black rounded-3xl"
             />
             <input
+              required
               type="password"
               name="password"
               id="password"

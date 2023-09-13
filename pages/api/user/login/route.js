@@ -22,7 +22,7 @@ const login = async (req, res) => {
     // if(password  user.password)
     if (!isPasswordMatch) {
       return res.status(400).json({
-        message: "Invalid Credentials",
+        error: "Invalid Credentials",
         success: false,
       });
     }
