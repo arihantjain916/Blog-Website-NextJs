@@ -23,6 +23,7 @@ export default function Blog() {
       toast.error(errorData.error);
     }
   },[])
+  const setBlog = blog.slice(0,4)
   return (
     <main className="p-10 font-Nunito">
       <Toaster />
@@ -34,7 +35,7 @@ export default function Blog() {
       {/* Blog grid start */}
       <div className="grid gap-5 gap-y-9 lg:grid-cols-3">
         {/* blog start */}
-        {blog.map((post) => {
+        {setBlog.map((post) => {
           const truncatedDescription = truncateText(post.description, 250);
           const postDate = new Date(post.date);
           const formattedDate = postDate.toLocaleDateString('en-US', {

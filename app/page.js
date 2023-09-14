@@ -1,7 +1,6 @@
-import { LogoutButton } from "../components/user/logout";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/footer";
-import Blog from "../components/blog/Blog";
+import Blog from "../components/blog/BlogMainPage";
 
 export default function Home() {
   return (
