@@ -18,9 +18,7 @@ export const Navbar = () => {
         const token = Cookies.get("JWT_AUTH_TOKEN");
         if (token) {
           setToken(true);
-        } else {
-          console.log("Cookie not found");
-        }
+        } 
       } catch (error) {
         console.error("Error fetching JWT_AUTH_TOKEN cookie:", error);
       }

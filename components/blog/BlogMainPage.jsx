@@ -36,15 +36,15 @@ export default function Blog() {
       <div className="grid gap-5 gap-y-9 lg:grid-cols-3">
         {/* blog start */}
         {setBlog.map((post) => {
-          const truncatedDescription = truncateText(post.description, 250);
-          const postDate = new Date(post.date);
+          const truncatedDescription = truncateText(`${post.description}`, 250);
+          const postDate = new Date(`${post.date}`);
           const formattedDate = postDate.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
           });
           return (
-            <div className="blog">
+            <div className="blog" key={setBlog.id}>
               <div className="flex items-center gap-3 mt-5 mb-2 time and category">
                 <div className="text-gray-400 time">
                   <p>{formattedDate}</p>
