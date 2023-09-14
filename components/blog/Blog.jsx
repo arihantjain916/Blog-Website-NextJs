@@ -35,12 +35,18 @@ export default function Blog() {
       <div className="grid gap-5 gap-y-9 lg:grid-cols-3">
         {/* blog start */}
         {blog.map((post) => {
-          const truncatedDescription = truncateText(post.description, 250)
+          const truncatedDescription = truncateText(post.description, 250);
+          const postDate = new Date(post.date);
+          const formattedDate = postDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          });
           return (
             <div className="blog">
               <div className="flex items-center gap-3 mt-5 mb-2 time and category">
                 <div className="text-gray-400 time">
-                  <p>{post.date}</p>
+                  <p>{formattedDate}</p>
                 </div>
                 <div className="px-2 text-gray-900 category">
                   <p>{`${post.category}`.toUpperCase()}</p>
@@ -61,7 +67,7 @@ export default function Blog() {
                   />
                   <div className="name">
                     <p>{post.user.username}</p>
-                    <p className="text-[#4B5563]">CEO</p>
+                    <p className="text-[#4B5563]">Student</p>
                   </div>
                 </div>
               </div>

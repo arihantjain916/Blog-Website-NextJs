@@ -1,5 +1,6 @@
 import connectDb from "../../../dbConfig/dbConfig";
 import Blog from "../../../models/Blog";
+import User from "../../../models/User";
 
 // Blog Sent
 connectDb();
@@ -7,8 +8,8 @@ connectDb();
 export default async (req, res) => {
   if (req.method === "GET") {
     try {
+      const user_temp = await User.find()
       const blogs = await Blog.find().sort({ date: -1 }).populate("user");
-      console.log(blogs);
       return res.status(200).json({ blog: blogs });
     } catch (err) {
       return res.status(500).json({
