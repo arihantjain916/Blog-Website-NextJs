@@ -5,7 +5,7 @@ function register() {
   return (
     <div>
       <div className="hidden lg:block">
-      <Navbar/>
+        <Navbar />
       </div>
       <Register />
     </div>

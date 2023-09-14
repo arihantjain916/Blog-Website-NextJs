@@ -4,7 +4,7 @@ import { Navbar } from "../../components/Navbar";
 const ContactUs = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Contactus />
     </div>
   );

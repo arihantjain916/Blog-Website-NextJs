@@ -47,9 +47,9 @@ export const Navbar = () => {
               <li className="ml-10 text-base uppercase hover:border-b">
                 <Link href="/about-us">About-Us</Link>
               </li>
-              {/* <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/user/login">Login</Link>
-              </li> */}
+              <li className="ml-10 text-base uppercase hover:border-b">
+                <Link href="/contact-us">Contact-Us</Link>
+              </li>
             </ul>
           </div>
           <div className="hidden lg:block">

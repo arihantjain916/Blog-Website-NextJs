@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: Boolean,
-    enum: ["true", "false"],
+
     default: false,
   },
 });
