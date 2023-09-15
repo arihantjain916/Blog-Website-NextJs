@@ -27,8 +27,7 @@ export default function Blog() {
     const truncatedText = text.substring(0, maxLength).trim();
     return `${truncatedText}...`;
   };
-  const setBlog = blog.slice(0, 4);
-  console.log(setBlog)
+  const setBlog = blog.slice(0, 3);
   return (
     <main className="p-10 font-Nunito">
       <Toaster />
@@ -66,7 +65,7 @@ export default function Blog() {
                   className="text-xl font-semibold text-[#363C49]"
                   key={setBlog._id}
                 >
-                  <Link href="#">{post.title}</Link>
+                  <Link href={`/blog/${post._id}`}>{post.title}</Link>
                 </h2>
                 <p className="text-[#4B5563]" key={setBlog._id}>
                   <Link href={`/blog/${post._id}`}>{truncatedDescription}</Link>

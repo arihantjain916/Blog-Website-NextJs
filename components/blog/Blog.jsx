@@ -69,10 +69,10 @@ const Blog = () => {
                 </div>
                 <div className="title">
                   <h1 className="mb-2 text-2xl">
-                    <Link href="#">{post.title}</Link>
+                     <Link href={`/blog/${post._id}`}>{post.title}</Link>
                   </h1>
                   <p>
-                    <Link href="#">{truncateText(post.description, 250)}</Link>
+                     <Link href={`/blog/${post._id}`}>{truncateText(post.description, 250)}</Link>
                   </p>
                 </div>
               </div>

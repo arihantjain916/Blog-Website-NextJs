@@ -1,5 +1,3 @@
-"use client"
-
 import BlogRead from "../../../components/blog/BlogRead";
 
 const BlogPost = ({params}) => {

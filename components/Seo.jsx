@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 const Seo = ({ pageTitle }) => {
-  console.log("pageTitle:", pageTitle); 
   return (
     <>
       <Head>

@@ -12,9 +12,7 @@ export default async (req, res) => {
     if (query) {
       try {
         const user_temp = await User.find();
-        const blogs = await Blog.find({
-          query,
-        })
+        const blogs = await Blog.findById(query)
           .sort({ date: -1 })
           .populate("user");
 
