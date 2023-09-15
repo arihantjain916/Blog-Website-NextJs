@@ -9,24 +9,24 @@ import {
 export const Footer = () => {
   return (
     <>
-    <hr />
+      <hr />
       <footer className="flex flex-col">
         <div className="flex flex-col px-5 py-10 text-gray-500 gap-y-8 font-Playfair lg:flex-row lg:justify-between lg:gap-10 ">
           <div className="w-full b1">
             <h1 className="mb-5 text-3xl text-black">Arihant Jain</h1>
             <h1 className="text-2xl text-black">Call Us</h1>
-            <a className="text-2xl text-blue-500" href="tel:+919672670732">
+            <Link className="text-2xl text-blue-500" href="tel:+919672670732">
               +919672670732
-            </a>
+            </Link>
             <p className="mt-5 mb-2 text-lg">
               Jaipur,Rajasthan
               <br />
               India, 302039
               <br />
             </p>
-            <a className="text-lg" href="mailto:arihantj916@gmail.com">
+            <Link className="text-lg" href="mailto:arihantj916@gmail.com">
               arihantj916@gmail.com
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col w-full box lg:flex-row gap-y-8">
             <div className="w-full b2">
@@ -35,9 +35,7 @@ export const Footer = () => {
                 <li className="mb-2 lg:mb-4" li></li>
                 <li className="mb-2 lg:mb-4">Terms Page</li>
                 <li className="mb-2 lg:mb-4">
-                  <Link href="/contact-us">
-                  Contact Us
-                  </Link>
+                  <Link href="/contact-us">Contact Us</Link>
                 </li>
               </ul>
             </div>

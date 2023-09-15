@@ -6,16 +6,19 @@ import toast, { Toaster } from "react-hot-toast";
 export default function Blog() {
   const [blog, setblog] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/api/blog");
-    if (response.status === 200) {
-      const data = await response.json();
-      setblog(data.blog);
-    } else {
-      const errorData = await response.json();
-      console.error(errorData.error);
-      toast.error(errorData.error);
-    }
+  useEffect(() => {
+    const fetchBlog = async () => {
+      const response = await fetch("/api/blog");
+      if (response.status === 200) {
+        const data = await response.json();
+        setblog(data.blog);
+      } else {
+        const errorData = await response.json();
+        console.error(errorData.error);
+        toast.error(errorData.error);
+      }
+    };
+    fetchBlog();
   }, []);
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -27,7 +30,6 @@ export default function Blog() {
   const setBlog = blog.slice(0, 4);
   return (
     <main className="p-10 font-Nunito">
-      
       <Toaster />
       <div className="mb-5">
         <h1 className="mb-2 text-3xl font-bold font-Nunito">From the Blog</h1>
@@ -58,12 +60,12 @@ export default function Blog() {
                   <p>{`${post.category}`.toUpperCase()}</p>
                 </div>
               </div>
-              <div className="flex flex-col w-full gap-y-5" >
+              <div className="flex flex-col w-full gap-y-5">
                 <h2
-                  className="text-xl font-semibold text-[#363C49]" 
+                  className="text-xl font-semibold text-[#363C49]"
                   key={setBlog._id}
                 >
-                  <Link href="#" >{post.title}</Link>
+                  <Link href="#">{post.title}</Link>
                 </h2>
                 <p className="text-[#4B5563]" key={setBlog._id}>
                   <Link href="#">{truncatedDescription}</Link>

@@ -93,9 +93,9 @@ export const Login = () => {
               onChange={(e) => setuser({ ...user, password: e.target.value })}
               className="p-3 pl-5 border-2 border-gray-300 outline-none focus:border-black rounded-3xl"
             />
-            <a href="#" className="-mt-3 text-end">
+            <Link href="#" className="-mt-3 text-end">
               Forgot Password?
-            </a>
+            </Link>
             {loading ? (
               <button
                 disabled
