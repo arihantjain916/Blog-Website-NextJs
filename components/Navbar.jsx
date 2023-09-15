@@ -26,7 +26,7 @@ export const Navbar = () => {
           <div className="hidden sm:flex">
             <ul className="hidden sm:flex">
               <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/">Home Page</Link>
+                <Link href="/blog">Blog</Link>
               </li>
               <li className="ml-10 text-base uppercase hover:border-b">
                 <Link href="/about-us">About-Us</Link>
@@ -36,7 +36,7 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden lg:block md:hidden">
             <LogoutButton />
           </div>
 
@@ -73,7 +73,7 @@ export const Navbar = () => {
                 onClick={() => setOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                <Link href="/">Home</Link>
+                <Link href="/blog">Blog</Link>
               </li>
               <li
                 onClick={() => setOpen(false)}

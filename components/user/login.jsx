@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
+import Seo from "../Seo";
 export const Login = () => {
   const router = useRouter();
 
@@ -54,6 +55,7 @@ export const Login = () => {
   };
   return (
     <>
+    <Seo pageTitle="Login" />
       <Toaster />
 
       <main className="lg:overflow-hidden lg:flex lg:p-16 lg:justify-around">

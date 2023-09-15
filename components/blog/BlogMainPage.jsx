@@ -28,6 +28,7 @@ export default function Blog() {
     return `${truncatedText}...`;
   };
   const setBlog = blog.slice(0, 4);
+  console.log(setBlog)
   return (
     <main className="p-10 font-Nunito">
       <Toaster />
@@ -68,7 +69,7 @@ export default function Blog() {
                   <Link href="#">{post.title}</Link>
                 </h2>
                 <p className="text-[#4B5563]" key={setBlog._id}>
-                  <Link href="#">{truncatedDescription}</Link>
+                  <Link href={`/blog/${post._id}`}>{truncatedDescription}</Link>
                 </p>
                 <div className="flex gap-5 mt-3 image">
                   <img
