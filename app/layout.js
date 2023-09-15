@@ -1,8 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Auth Checker Website",
-  description: "Testing website to check auth",
+  title: "Blog Website",
+  description:
+    "A website where user can read the blogs according to there preference and can sort the category of the blogs",
 };
 
 export default function RootLayout({ children }) {

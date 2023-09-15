@@ -1,10 +1,14 @@
 import BlogRead from "../../../components/blog/BlogRead";
+import { Navbar } from "../../../components/Navbar";
 
-const BlogPost = ({params}) => {
-
+const BlogPost = ({ params }) => {
   return (
-    <BlogRead id={params.id} />
-  )
+    <>
+      <Navbar />
+      <main className="p-10"></main>
+      <BlogRead id={params.id} />
+    </>
+  );
 };
 
 export default BlogPost;
