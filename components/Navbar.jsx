@@ -1,30 +1,28 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import { LogoutButton } from "./user/logout";
+import {useRouter} from "next/navigation"
 
 export const Navbar = () => {
-  const router = useRouter();
+  const router = useRouter()
   const [isOpen, setOpen] = useState(false);
   const [isToken, setToken] = useState(false);
 
   useEffect(() => {
-    const checkToken = async () => {
-      try {
-        const token = Cookies.get("JWT_AUTH_TOKEN");
-        if (token) {
-          setToken(true);
-        } 
-      } catch (error) {
-        console.error("Error fetching JWT_AUTH_TOKEN cookie:", error);
-      }
+    const checkToken = () => {
+      const token = Cookies.get("JWT_AUTH_TOKEN");
+      setToken(!!token);
     };
     checkToken();
   }, []);
+
+  // <button className="mr-3 border-2 px-8 py-3 rounded-full bg-blue-500 text-white outline-none">
+  //         <Link href="/user/login">Login</Link>
+  //         </button>
   function NavOpen() {
     setOpen(!isOpen);
   }
@@ -51,7 +49,13 @@ export const Navbar = () => {
             </ul>
           </div>
           <div className="hidden lg:block">
-            <LogoutButton />
+            {isToken ? (
+              <LogoutButton />
+            ) : (
+              <button className="mr-3 border-2 px-8 py-3 rounded-full bg-blue-500 text-white outline-none" >
+               <a href="/user/login">Login</a>
+              </button>
+            )}
           </div>
 
           <div className="lg:hidden md:hidden">
