@@ -4,11 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import { LogoutButton } from "./user/logout";
+import { SearchBox } from "./SearchBox";
 
 export const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
-  // <button className="mr-3 border-2 px-8 py-3 rounded-full bg-blue-500 text-white outline-none">
+  // <button className="px-8 py-3 mr-3 text-white bg-blue-500 border-2 rounded-full outline-none">
   //         <Link href="/user/login">Login</Link>
   //         </button>
   function NavOpen() {
@@ -25,19 +26,25 @@ export const Navbar = () => {
           </div>
           <div className="hidden sm:flex">
             <ul className="hidden sm:flex">
-              <li className="ml-10 text-base uppercase hover:border-b">
+              <li className="ml-10 text-base hover:border-b">
                 <Link href="/blog">Blog</Link>
               </li>
-              <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/about-us">About-Us</Link>
+              <li className="ml-10 text-base hover:border-b">
+                <Link href="/about-us">About-Me</Link>
               </li>
-              <li className="ml-10 text-base uppercase hover:border-b">
-                <Link href="/contact-us">Contact-Us</Link>
+              <li className="ml-10 text-base hover:border-b">
+                <Link href="/contact-us">Contact-Me</Link>
               </li>
             </ul>
           </div>
-          <div className="hidden lg:block md:hidden">
-            <LogoutButton />
+          <div className="hidden lg:flex">
+            <div>
+              <SearchBox />
+            </div>
+
+            <div className="mt-9">
+              <LogoutButton />
+            </div>
           </div>
 
           <div className="lg:hidden md:hidden">
@@ -79,22 +86,17 @@ export const Navbar = () => {
                 onClick={() => setOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                <Link href="/">Home</Link>
+                <Link href="/about-me">About-Me</Link>
               </li>
               <li
                 onClick={() => setOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                <Link href="/faq">FAQ</Link>
-              </li>
-              <li
-                onClick={() => setOpen(false)}
-                className="py-4 cursor-pointer"
-              >
-                <Link href="/contact-us">Contact-Us</Link>
+                <Link href="/contact-us">Contact-Me</Link>
               </li>
             </ul>
           </div>
+          <SearchBox/>
           <LogoutButton />
         </div>
       </nav>

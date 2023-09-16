@@ -8,34 +8,32 @@ connectDb();
 
 export default async (req, res) => {
   if (req.method === "GET") {
-    const { query } = req.query;
-    if (query) {
-      try {
-        const user_temp = await User.find();
-        const blogs = await Blog.findById(query)
-          .sort({ date: -1 })
-          .populate("user");
+    const query = req.query;
+    const { id, category, limit } = query;
 
-        return res.status(200).json({ blog: blogs });
-      } catch (err) {
-        return res.status(500).json({
-          message: "Error...",
-          success: false,
-          error: err.message,
-        });
-      }
-    } else {
-      try {
-        const user_temp = await User.find();
-        const blogs = await Blog.find().sort({ date: -1 }).populate("user");
-        return res.status(200).json({ blog: blogs });
-      } catch (err) {
-        return res.status(500).json({
-          message: "Error...",
-          success: false,
-          error: err.message,
-        });
-      }
+    let querydata = {};
+    const defaultLimit = 9;
+    if (id) {
+      querydata._id = id;
+    } else if (category) {
+      querydata.category = category;
+    }
+    try {
+      const user_temp = await User.find();
+      const blogs = await Blog.find(querydata)
+        .sort({ date: -1 })
+        .populate("user")
+        .limit(limit || defaultLimit);
+
+      const blogCount = await Blog.count();
+
+      return res.status(200).json({ blog: blogs, blogCount: blogCount });
+    } catch (err) {
+      return res.status(500).json({
+        message: "Error...",
+        success: false,
+        error: err.message,
+      });
     }
   }
   if (req.method === "POST") {

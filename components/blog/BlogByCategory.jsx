@@ -6,7 +6,6 @@ import Loading from "../../app/loading";
 import Link from "next/link";
 
 const Blog = ({category}) => {
-  const categoryParams = category || ""
   const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(9);
@@ -15,7 +14,7 @@ const Blog = ({category}) => {
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`/api/blog?limit=${limit}&category=${categoryParams}`);
+      const response = await fetch(`/api/blog?limit=${limit}&category=${category}`);
       if (response.status === 200) {
         const data = await response.json();
         setBlog(data.blog);
@@ -57,7 +56,7 @@ const Blog = ({category}) => {
     return () => {
       clearInterval(interval);
     };
-  }, [limit,category]);
+  }, [limit]);
 
   return (
     <main className="p-8 font-Nunito">
@@ -84,10 +83,7 @@ const Blog = ({category}) => {
                     </p>
                   </div>
                   <div className="category">
-                    <p className="text-blue-800">
-                      <Link href={`/blog?category=${post.category}`}>
-                      {post.category.toUpperCase()}</Link>
-                    </p>
+                    <p>{post.category.toUpperCase()}</p>
                   </div>
                 </div>
                 <div className="title">

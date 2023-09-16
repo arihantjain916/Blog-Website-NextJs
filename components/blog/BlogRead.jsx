@@ -5,13 +5,13 @@ import toast, { Toaster } from "react-hot-toast";
 import Loading from "../../app/loading";
 
 const BlogRead = ({ id }) => {
-  const [blog, setBlog] = useState(null);
+  const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`/api/blog?query=${id}`);
+        const response = await fetch(`/api/blog?id=${id}`);
 
         if (response.ok) {
           const data = await response.json();
@@ -32,47 +32,49 @@ const BlogRead = ({ id }) => {
     fetchBlog();
   }, [id]);
 
-  return (
-    <main className="font-Nunito p-8">
-      <Toaster />
+  const renderBlogItems = () => {
+    if (loading) {
+      return <Loading />;
+    }
 
-      {loading ? (
-        <Loading />
-      ) : (
-        blog && (
-          <div class="p-10">
-            <div class="category-time flex gap-5 justify-around">
-              <div class="time">
-                <p>
-                  {new Date(blog.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-              <div class="category text-white px-3 bg-blue-500 ">
-                {" "}
-                <p>{blog.category.toUpperCase()}</p>
-              </div>
+    if (blog.length === 0) {
+      return <p>No blog posts found.</p>;
+    }
+
+    return blog.map((blogItem) => (
+      <>
+        <Toaster />
+        <div key={blogItem._id} className="p-10">
+          <div className="flex justify-around gap-5 category-time">
+            <div className="time">
+              <p>
+                {new Date(blogItem.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </p>
             </div>
-            <div class="content">
-              <div class="title text-center text-3xl font-semibold mb-5 mt-3 lg:mt-10 lg:mb-9">
-                <h1>
-                  <Link href={`/blog/${blog._id}`}>{blog.title}</Link>
-                </h1>
-              </div>
-              <div class="content text-center">
-                <p>
-                  <Link href={`/blog/${blog._id}`}>{blog.description}</Link>
-                </p>
-              </div>
+            <div className="px-3 text-white bg-blue-500 category ">
+              <p>{blogItem.category?.toUpperCase()}</p>
             </div>
           </div>
-        )
-      )}
-    </main>
-  );
+          <div className="content">
+            <div className="mt-3 mb-5 text-3xl font-semibold text-center title lg:mt-10 lg:mb-9">
+              <h1>
+                {blogItem.title}
+                <p className="mt-2 text-base">By: {blogItem.user.username}</p>
+              </h1>
+            </div>
+            <div className="text-center content">
+              <p>{blogItem.description}</p>
+            </div>
+          </div>
+        </div>
+      </>
+    ));
+  };
+  return renderBlogItems();
 };
 
 export default BlogRead;

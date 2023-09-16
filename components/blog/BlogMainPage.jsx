@@ -57,7 +57,11 @@ export default function Blog() {
                   <p>{formattedDate}</p>
                 </div>
                 <div className="px-2 text-gray-900 category" key={setBlog._id}>
-                  <p>{`${post.category}`.toUpperCase()}</p>
+                  <p className="text-blue-800">
+                    <Link href={`/blog?category=${post.category}`}>
+                      {post.category.toUpperCase()}
+                    </Link>
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col w-full gap-y-5">
