@@ -13,7 +13,6 @@ const BlogPage = () => {
   return (
     <>
       <Navbar />
-      <main className="p-10"></main>
       <Blog  category={category} search={search} />
       <Footer/>
     </>

@@ -5,7 +5,6 @@ const BlogPost = ({ params }) => {
   return (
     <>
       <Navbar />
-      <main className="p-10"></main>
       <BlogRead id={params.id} />
     </>
   );

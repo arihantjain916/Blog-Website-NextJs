@@ -55,7 +55,7 @@ export const Register = () => {
     <>
       <Toaster />
 
-      <main className="lg:flex lg:justify-around lg:p-16 lg:overflow-hidden">
+      <main className="lg:flex lg:justify-around lg:p-5 lg:overflow-hidden">
         <div className="content">
           {/* <!-- heading start from here --> */}
           <div className="p-3 pt-11">

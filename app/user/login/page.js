@@ -4,12 +4,8 @@ import { Navbar } from "../../../components/Navbar";
 const login = () => {
   return (
     <>
-      <div>
-        <div className="hidden lg:block">
-          <Navbar />
-        </div>
-        <Login />
-      </div>
+      <Navbar />
+      <Login />
     </>
   );
 };

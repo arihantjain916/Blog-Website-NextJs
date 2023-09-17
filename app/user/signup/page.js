@@ -3,12 +3,10 @@ import { Navbar } from "../../../components/Navbar";
 
 function register() {
   return (
-    <div>
-      <div className="hidden lg:block">
-        <Navbar />
-      </div>
+    <>
+      <Navbar />
       <Register />
-    </div>
+    </>
   );
 }
 
