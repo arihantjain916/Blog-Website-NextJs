@@ -59,7 +59,7 @@ const Blog = ({category,search}) => {
     return () => {
       clearInterval(interval);
     };
-  }, [limit,category]);
+  }, [limit,category,search]);
 
   return (
     <main className="p-8 font-Nunito">
@@ -107,13 +107,13 @@ const Blog = ({category,search}) => {
           ))}
         </div>
       )}
-      {blog.length > 0 && !maxBlog && (
-      <div className="mx-auto mt-5 text-center">
-        <div className="w-full h-[2px] bg-black"></div>
-        <button onClick={handleLimit}>Read More</button>
-        <div className="w-full h-[3px] bg-black"></div>
-      </div>
-    )}
+     {blog.length > 0 && count > limit && (
+  <div className="mx-auto mt-5 text-center">
+    <div className="w-full h-[2px] bg-black"></div>
+    <button onClick={handleLimit}>Read More</button>
+    <div className="w-full h-[3px] bg-black"></div>
+  </div>
+)}
     </main>
   );
 };

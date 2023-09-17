@@ -3,7 +3,6 @@ import {
   AiOutlineInstagram,
   AiOutlineGithub,
   AiOutlineLinkedin,
-  AiOutlineCopyrightCircle,
 } from "react-icons/ai";
 
 export const Footer = () => {
@@ -58,13 +57,28 @@ export const Footer = () => {
           </div>
           <div className="flex gap-5 icons">
             <div className="instagram">
-              <AiOutlineInstagram size={40} />
+              <Link
+                href="https://www.instagram.com/arihantjain916"
+                target="_blank"
+              >
+                <AiOutlineInstagram size={40} />
+              </Link>
             </div>
             <div className="linkedin">
-              <AiOutlineLinkedin size={40} />
+              <Link
+                href="https://www.linkedin.com/in/arihantjain916"
+                target="_blank"
+              >
+                <AiOutlineLinkedin size={40} />
+              </Link>
             </div>
             <div className="github">
-              <AiOutlineGithub size={40} />
+              <Link
+                href="https://www.github.com/arihantjain916"
+                target="_blank"
+              >
+                <AiOutlineGithub size={40} />
+              </Link>
             </div>
           </div>
         </div>
