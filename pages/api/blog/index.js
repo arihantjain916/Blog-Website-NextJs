@@ -11,7 +11,7 @@ export default async (req, res) => {
     const query = req.query;
     const { id, category, limit, search } = query;
 
-    console.log("From Backend: " + search)
+    // console.log("From Backend: " + search)
 
     let querydata = {};
     const defaultLimit = 9;
@@ -33,7 +33,7 @@ export default async (req, res) => {
         .limit(limit || defaultLimit);
 
       const blogCount = await Blog.count();
-      console.log("blogs: " + blogs);
+      // console.log("blogs: " + blogs);
       return res.status(200).json({ blog: blogs, blogCount: blogCount });
     } catch (err) {
       return res.status(500).json({

@@ -8,7 +8,7 @@ import Link from "next/link";
 const Blog = ({category,search}) => {
   const categoryParams = category || ""
   const SearchParams = search || ""
-  console.log(SearchParams)
+  // console.log(SearchParams)
   const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(9);
