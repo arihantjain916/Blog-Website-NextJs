@@ -11,7 +11,6 @@ const Search = async (req, res) => {
       $or: [{ title: { $regex: search } }, { description: { $regex: search } }],
     });
 
-    console.log(searchBlogs)
     return res.status(200).json({
       blogs: searchBlogs,
     });

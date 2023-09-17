@@ -96,7 +96,6 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
-          <SearchBox/>
           <LogoutButton />
         </div>
       </nav>

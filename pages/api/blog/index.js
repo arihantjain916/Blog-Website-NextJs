@@ -9,7 +9,9 @@ connectDb();
 export default async (req, res) => {
   if (req.method === "GET") {
     const query = req.query;
-    const { id, category, limit } = query;
+    const { id, category, limit, search } = query;
+
+    console.log("From Backend: " + search)
 
     let querydata = {};
     const defaultLimit = 9;
@@ -17,6 +19,11 @@ export default async (req, res) => {
       querydata._id = id;
     } else if (category) {
       querydata.category = category;
+    } else if (search) {
+      querydata.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
+      ];
     }
     try {
       const user_temp = await User.find();
@@ -26,7 +33,7 @@ export default async (req, res) => {
         .limit(limit || defaultLimit);
 
       const blogCount = await Blog.count();
-
+      console.log("blogs: " + blogs);
       return res.status(200).json({ blog: blogs, blogCount: blogCount });
     } catch (err) {
       return res.status(500).json({

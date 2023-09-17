@@ -5,8 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 import Loading from "../../app/loading";
 import Link from "next/link";
 
-const Blog = ({category}) => {
+const Blog = ({category,search}) => {
   const categoryParams = category || ""
+  const SearchParams = search || ""
+  console.log(SearchParams)
   const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(9);
@@ -15,7 +17,7 @@ const Blog = ({category}) => {
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`/api/blog?limit=${limit}&category=${categoryParams}`);
+      const response = await fetch(`/api/blog?limit=${limit}&category=${categoryParams}&search=${SearchParams}`);
       if (response.status === 200) {
         const data = await response.json();
         setBlog(data.blog);
@@ -105,13 +107,13 @@ const Blog = ({category}) => {
           ))}
         </div>
       )}
-      {!maxBlog && (
-        <div className="mx-auto mt-5 text-center">
-          <div className="w-full h-[2px] bg-black"></div>
-          <button onClick={handleLimit}>Read More</button>
-          <div className="w-full h-[3px] bg-black"></div>
-        </div>
-      )}
+      {blog.length > 0 && !maxBlog && (
+      <div className="mx-auto mt-5 text-center">
+        <div className="w-full h-[2px] bg-black"></div>
+        <button onClick={handleLimit}>Read More</button>
+        <div className="w-full h-[3px] bg-black"></div>
+      </div>
+    )}
     </main>
   );
 };

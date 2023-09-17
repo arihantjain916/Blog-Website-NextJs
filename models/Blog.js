@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const blogSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "Please provide an Username"],
+    required: [true, "Please provide an title"],
   },
   description: {
     type: String,
