@@ -10,7 +10,7 @@ One of the standout features of our website is its intuitive categorization syst
 Join our vibrant community today and immerse yourself in the world of captivating blogs, all powered by the cutting-edge technology of Next.js. Dive into your favorite categories, connect with like-minded individuals, and let the exploration of ideas begin. Happy reading!
 
 
-Checkout me Project [Link](https://blog-website-phi-murex.vercel.app/)
+Checkout me Project [Link](https://blog-website-arihant.vercel.app/)
 
 
 ## Run Locally
